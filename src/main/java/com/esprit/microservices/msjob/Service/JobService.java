@@ -29,16 +29,7 @@ public class JobService implements IJobService{
         return jobRepository.findAll();
     }
 
-    @Override
-    public Job findById(int id) {
-        return jobRepository.findById(id).orElse(Job.builder().id(0).service("Pas de bloc").etat(false).build());
-    }
 
-    @Override
-    public Job findByService(String service) {
-        return jobRepository.findByService(service)
-                .orElse(Job.builder().id(0).service("Pas de bloc").etat(false).build());
-    }
 
     @Override
     public Job editJob(Job j) {
@@ -56,13 +47,5 @@ public class JobService implements IJobService{
 
     }
 
-    @Override
-    public Job updateJobState(int id, boolean isAvailable) {
-        Job job = jobRepository.findById(id)
-                .orElse(Job.builder().id(0).service("Pas de bloc").etat(false).build());
 
-        job.setEtat(isAvailable);
-
-        return jobRepository.save(job);
-    }
 }

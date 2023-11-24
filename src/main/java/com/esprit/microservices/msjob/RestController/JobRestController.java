@@ -14,22 +14,13 @@ public class JobRestController {
     IJobService iJobService;
 
     @GetMapping("findAll")
-    List<Job> findAll(){
+    List<Job> findAll() {
         return iJobService.findAll();
     }
 
-    @GetMapping("findByIdJ/{id}")
-    public Job findByIdJ(@PathVariable int id) {
-        return iJobService.findById(id);
-    }
-
-    @GetMapping("/findByService/{service}")
-    public Job findByService(@PathVariable String service) {
-        return iJobService.findByService(service);
-    }
 
     @PostMapping("addJob")
-    Job addBloc(@RequestBody Job j){
+    Job addBloc(@RequestBody Job j) {
         return iJobService.addJob(j);
     }
 
@@ -47,9 +38,4 @@ public class JobRestController {
     public Job editJob(@RequestBody Job j) {
         return iJobService.editJob(j);
     }
-
-        @PostMapping("/updateJobState/{id}/{isAvailable}")
-        public Job updateJobState(@PathVariable int id, @PathVariable boolean isAvailable) {
-            return iJobService.updateJobState(id, isAvailable);
-        }
 }
